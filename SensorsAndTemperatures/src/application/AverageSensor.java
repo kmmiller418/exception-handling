@@ -12,21 +12,25 @@ public class AverageSensor implements Sensor {
         this.readings = new ArrayList<>();
     }
 
+    @Override
     public boolean isOn() {
         return sensors.stream()
                 .allMatch(Sensor::isOn);
     }
 
+    @Override
     public void setOn() {
         sensors.forEach(sensor -> sensor.setOn());
     }
 
 
+    @Override
     public void setOff() {
         sensors.forEach(sensor -> sensor.setOff());
     }
 
 
+    @Override
     public int read() {
         if (!isOn()){
             throw new IllegalStateException("Sensor is not on!");
